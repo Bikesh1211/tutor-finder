@@ -1,3 +1,6 @@
+<!-- Bootstrap Icons CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+      
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand fw-bold" href="./">Tutor Finder</a>
@@ -5,29 +8,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto" id="navbarList">
+      <a id="admin-pannel-btn" class="btn btn-primary d-none" href="#">Action</a> <!-- Button's ID set to actionButton -->
         
-        <li class="nav-item">
+        <li class="nav-item" >
           <div class="d-flex align-items-center justify-content-center font-weight-bold">
-
             <a class="nav-link btn d-none text-black" id="userNameLink" href="../profile.html"></a>
         </div>
         
         </li>
-        
-        <!-- <li class="nav-item">
-          <a class="nav-link btn">Find Tutor</a>
-        </li>
-         -->
-        
+                
         <li class="nav-item" id="login-link">
-          <a class="nav-link link-primary btn" id="login-btn" href="login.html">Sign In</a>
+          <a class="nav-link link-primary btn text-decoration-underline" id="login-btn" href="login.html"> Register Account </a>
         </li>
-        <!-- <li class="nav-item" id="signup-link">
-          <a class="nav-link text-primary btn" id="register-btn" href="signup.html">Sign Up</a>
-        </li> -->
+
         <li class="nav-item" id="logout-li">
-          <a class="nav-link link-danger btn"  id="logout-btn">Sign Out</a>
+          <a class="nav-link link-danger btn"  id="logout-btn">Sign Out </a>
         </li>
 
       </ul>

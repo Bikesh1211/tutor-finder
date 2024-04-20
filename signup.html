@@ -15,6 +15,15 @@
   <div id="navbarContainer"></div>
   <script src="./js/navbar.js"></script>
   
+  <!-- Hero Section -->
+<section class="hero bg-info text-black py-5">
+  <div class="container text-center">
+    <h1 class="display-4">Join Our Community</h1>
+    <p class="lead">Register now and unlock access to exclusive features.</p>
+    <a id="actionButton" class="btn btn-primary" href="login.html">Sign In</a> <!-- Button's ID set to actionButton -->
+  </div>
+</section>
+
   <div class="container my-5">
     <div class="row justify-content-center">
         <!-- <div class="col-md-6">
@@ -28,67 +37,74 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h1 class="text-center mb-4">Register Account</h1>
-            <form id="registerForm" class="needs-validation" novalidate>
-              <div class="mb-3 ">
-                <label class="form-label" for="role">Register As</label>
-                <select id="role" class="form-select" aria-label="Default select example" required>
-                  <option value="">Choose...</option>
-                  <option value="student">Student</option>
-                  <option value="teacher">Teacher</option>
-                </select>
-                <div class="invalid-feedback">Please select a role.</div>
+            <h1 class="text-center">
+              <i class="bi bi-person-circle"></i>
+            </h1>
+            <h2 class="text-center mb-4">Create Your Account</h2>
+                  <form id="registerForm" class="needs-validation" novalidate>
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label class="form-label" for="role">Register As</label>
+                  <select id="role" class="form-select" aria-label="Default select example" required>
+                    <option value="">Choose...</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                  </select>
+                  <div class="invalid-feedback">Please select a role.</div>
+                </div>
               </div>
-
-              <div class="mb-3">
-                <label class="form-label" for="fullName">Full Name</label>
-                <input type="text" class="form-control" id="fullName" aria-describedby="fullNameHelp" required>
-                <div class="invalid-feedback">Please provide your full name.</div>
+            
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="fullName">Full Name</label>
+                  <input type="text" class="form-control" id="fullName" aria-describedby="fullNameHelp" required>
+                  <div class="invalid-feedback">Please provide your full name.</div>
+                </div>
+            
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="address">Address</label>
+                  <input type="text" class="form-control" id="address" aria-describedby="addressHelp" required>
+                  <div class="invalid-feedback">Please provide your address.</div>
+                </div>
               </div>
-
-              <div class="mb-3">
-                <label class="form-label" for="address">Address</label>
-                <input type="text" class="form-control" id="address" aria-describedby="addressHelp" required>
-                <div class="invalid-feedback">Please provide your address.</div>
+            
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" aria-describedby="phoneHelp" required>
+                  <div class="invalid-feedback">Please provide a valid phone number.</div>
+                </div>
+            
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="gender">Gender</label>
+                  <select id="gender" class="form-select" aria-label="Default select example" required>
+                    <option value="">Choose...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="invalid-feedback">Please select your gender.</div>
+                </div>
               </div>
-
-              <div class="mb-3">
-                <label class="form-label" for="gender">Gender</label>
-                <select id="gender" class="form-select" aria-label="Default select example" required>
-                  <option value="">Choose...</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-                <div class="invalid-feedback">Please select your gender.</div>
+            
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="email">Email</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+                  <div class="invalid-feedback">Please provide a valid email address.</div>
+                </div>
+            
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="password">Password</label>
+                  <input type="password" class="form-control" id="password" required>
+                  <div class="invalid-feedback">Please provide a password.</div>
+                </div>
               </div>
-
-              <div class="mb-3">
-                <label class="form-label" for="email">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
-                <div class="invalid-feedback">Please provide a valid email address.</div>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label" for="phone">Phone</label>
-                <input type="tel" class="form-control" id="phone" aria-describedby="phoneHelp" required>
-                <div class="invalid-feedback">Please provide a valid phone number.</div>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" class="form-control" id="password" required>
-                <div class="invalid-feedback">Please provide a password.</div>
-              </div>
-
-              <button type="submit" class="btn btn-primary w-100">Register</button>
+            
+              <button type="submit" class="btn btn-primary w-100">Sign Up</button>
             </form>
-            <div class="text-center mt-3">
-              Already Have an Account? <a href="login.html">Login</a>
-            </div>
-            <div class="text-center mt-3">
-              <a href="index.html" class="btn btn-secondary">Go back to home page</a>
-            </div>
+            
+
           </div>
         </div>
       </div>

@@ -38,6 +38,14 @@ window.addEventListener("DOMContentLoaded", () => {
         // Show the add post button
         document.getElementById("add-post").classList.remove("d-none");
         logoutButton.classList.remove("d-none");
+
+        // Get the action button
+        const actionButton = document.getElementById("admin-pannel-btn");
+        actionButton.parentNode.classList.remove("d-none");
+
+        // If user is logged in, change the button text and link
+        actionButton.innerText = "Find Tutor";
+        actionButton.href = "tutor.html"; // Update this to your find teacher page
       } else {
         logoutLi.classList.add("d-none");
       }
