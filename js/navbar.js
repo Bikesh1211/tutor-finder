@@ -6,8 +6,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
       const userData = localStorage.getItem("userData");
       const token = JSON.parse(userData)?.data?.token;
-      console.log("🚀 ~ .then ~ token:", token);
-
       const logoutButton = document.getElementById("logout-btn");
       const logoutLi = document.getElementById("logout-li");
       const userNameLink = document.getElementById("userNameLink");
@@ -15,17 +13,23 @@ window.addEventListener("DOMContentLoaded", () => {
       const isSuccess = JSON.parse(userData)?.data?.success;
 
       // Update the text content of the userNameLink
-      userNameLink.innerText = userName;
+      // userNameLink.innerText = userName;
+
+      userNameLink.innerHTML = `
+      <i class="bi bi-person-circle" ></i>
+      ${userName}
+    `;
 
       logoutButton.addEventListener("click", () => {
         localStorage.clear();
-        window.location.replace("feed.html");
+        window.location.replace("/");
       });
 
       // Check if the user is logged in and update UI accordingly
       if (Boolean(token)) {
         logoutLi.classList.remove("d-none");
         userNameLink.classList.remove("d-none");
+
         // Remove login and sign up buttons if user is logged in
         document.getElementById("login-btn").parentNode.classList.add("d-none");
         document

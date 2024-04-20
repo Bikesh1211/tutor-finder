@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tutor Finder</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -16,7 +19,7 @@
     <div class="container text-center">
       <h1 class="display-4">Find Your Perfect Tutor</h1>
       <p class="lead">Get personalized tutoring from top-rated tutors in your area.</p>
-      <a class="btn btn-primary" href="signup.html">Sign Up Now</a>
+      <a id="actionButton" class="btn btn-primary" href="#">Action</a> <!-- Button's ID set to actionButton -->
     </div>
   </section>
 
@@ -38,31 +41,26 @@
   </section>
   
 
-  <!-- Footer -->
-  <!-- <footer class="footer mt-auto py-4 bg-dark text-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="mb-1 fw-bold">Tutor Finder &copy; 2024</p>
-          <div class="mb-3">
-            <a href="#" class="mx-2 text-decoration-none text-white">About</a>
-            <a href="#" class="mx-2 text-decoration-none text-white">Services</a>
-            <a href="#" class="mx-2 text-decoration-none text-white">Contact</a>
-          </div>
-        </div>
-        <div class="col-md-6 text-center text-md-end">
-          <p class="mb-2 fw-bold">Follow us on social media:</p>
-          <div>
-            <a href="#" class="me-3 text-decoration-none text-white"><i class="bi bi-facebook fs-4"></i></a>
-            <a href="#" class="me-3 text-decoration-none text-white"><i class="bi bi-twitter fs-4"></i></a>
-            <a href="#" class="me-3 text-decoration-none text-white"><i class="bi bi-instagram fs-4"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer> -->
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/navbar.js"></script>
+  <script>
+    // Check if the user is logged in (you can use your own logic here)
+    const isLoggedIn = false; // Example: Change this to your actual logic
+    const userData = localStorage.getItem("userData");
+    const token = JSON.parse(userData)?.data?.token;
+    console.log('🚀 ~ token:', Boolean(token))
+    
+    // Get the action button
+    const actionButton = document.getElementById("actionButton");
+    
+    // If user is logged in, change the button text and link
+    if (Boolean(token)) {
+      actionButton.innerText = "Find Tutor";
+      actionButton.href = "find-teacher.html"; // Update this to your find teacher page
+    } else {
+      actionButton.innerText ="Sign In Now!"
+      actionButton.href = "login.html"; // Update this to your sign up page
+    }
+  </script>
 </body>
 </html>

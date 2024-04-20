@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Posts</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4">Manage Your Posts</h1>
+            <!-- Create Post Form -->
+            <form id="createPostForm">
+                <h2>Create New Post</h2>
+                <div class="mb-3">
+                    <label for="postTitle" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="postTitle" required>
+                </div>
+                <div class="mb-3">
+                    <label for="postContent" class="form-label">Content</label>
+                    <textarea class="form-control" id="postContent" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Post</button>
+            </form>
+        </div>
+        <div class="col">
+            <h2>Manage Existing Posts</h2>
+            <!-- List of Posts -->
+            <ul id="postList" class="list-group">
+                <!-- JavaScript will populate this list -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript for managing posts -->
+<script src="./js/manage-post.js"></script>
+</body>
+</html>
