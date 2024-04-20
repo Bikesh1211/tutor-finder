@@ -9,7 +9,9 @@
 </head>
 
 <body>
-
+  <div id="alertContainer"></div>
+  <div id="navbarContainer"></div>
+  <script src="./js/navbar.js"></script>
   <div class="container">
     <div class="row justify-content-center mt-5">
       <div class="col-md-6">
@@ -53,9 +55,54 @@
       if (form.checkValidity() === false) {
         form.classList.add('was-validated');
       } else {
-        // Handle form submission here
-        // For example, you can submit the form via AJAX
-        console.log('Form is valid. Proceed with submission...');
+        const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+
+          // Data to be sent in the POST request
+          const data = {
+            email,
+            password
+          };
+
+          // Options for the fetch() function
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          };
+
+          fetch('http://localhost:2003/login', options)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              // Display success message
+              const alertContainer = document.getElementById('alertContainer');
+              alertContainer.innerHTML = `
+                <div class="alert alert-success" role="alert">
+                  Login successful! Redirecting to homepage...
+                </div>
+              `;
+              // Redirect after a short delay
+              setTimeout(function () {
+                window.location.replace("index.html");
+                const userData = JSON.stringify(data);
+                localStorage.setItem('userData', userData);
+              },2000);
+            })
+            .catch(error => {
+              // Handle errors
+              console.error('There was a problem with the fetch operation:', error);
+              // Display error message if needed
+            });
+
+        
+        
       }
     });
   </script>

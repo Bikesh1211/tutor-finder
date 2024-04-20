@@ -12,7 +12,9 @@
 
 <body>
 
-    
+  <div id="navbarContainer"></div>
+  <script src="./js/navbar.js"></script>
+  
   <div class="container my-5">
     <div class="row justify-content-center">
         <!-- <div class="col-md-6">
@@ -106,6 +108,61 @@
       if (form.checkValidity() === false) {
         form.classList.add('was-validated');
       } else {
+
+
+
+        const email = document.getElementById("email").value;
+              const password = document.getElementById("password").value;
+              const fullName = document.getElementById("fullName").value;
+              const gender = document.getElementById("gender").value;
+              const address = document.getElementById("address").value;
+              const role = document.getElementById("role").value;
+              const phone = document.getElementById("phone").value;
+
+              const data = {
+                email,
+                password,
+                fullName,
+                address,
+                phone,
+                role,
+                gender,
+              };
+              console.log("🚀 ~ data:", data);
+
+              // Options for the fetch() function
+              const options = {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              };
+
+              fetch("http://localhost:2003/register", options)
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                  }
+                  console.log(response.status, "<----- status");
+                  return response.json();
+                })
+                .then((data) => {
+                  if (data.success) {
+                    window.location.replace("users.html");
+                    localStorage.setItem("userData", JSON.stringify(data));
+                  }
+                })
+                .catch((error) => {
+                  // Handle errors
+                  console.error(
+                    "There was a problem with the fetch operation:",
+                    error
+                  );
+                });
+        
+        
+        
         // Handle form submission here
         // For example, you can submit the form via AJAX
         console.log('Form is valid. Proceed with submission...');
