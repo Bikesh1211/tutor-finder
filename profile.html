@@ -26,21 +26,21 @@
                     <div class="card-body">
                         <h1 class="text-center">
                             <i class="bi bi-person-circle"></i>
-                          </h1>
-                          <h2 class="text-center mb-4">Profile Details</h2>
+                        </h1>
+                        <h2 class="text-center mb-4">Profile Details</h2>
                         <form id="updateProfileForm" class="needs-validation" novalidate>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="fullName" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="fullName" value="Hyatt Sykes" required>
+                                        <input type="text" class="form-control" id="fullName" required>
                                         <div class="invalid-feedback">Please provide your full name.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" id="email" value="bchaudhary@eeposit.com" required>
+                                        <input type="email" class="form-control" id="email" required>
                                         <div class="invalid-feedback">Please provide a valid email address.</div>
                                     </div>
                                 </div>
@@ -50,14 +50,14 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phone" value="1 (234) 707-9417" required>
+                                        <input type="tel" class="form-control" id="phone" required>
                                         <div class="invalid-feedback">Please provide a valid phone number.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control" id="address" value="Ab dolor dolorum qui" required>
+                                        <input type="text" class="form-control" id="address" required>
                                         <div class="invalid-feedback">Please provide your address.</div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender</label>
-                                        <input type="text" class="form-control" id="gender" value="Female" required>
+                                        <input type="text" class="form-control" id="gender" required>
                                         <div class="invalid-feedback">Please select your gender.</div>
                                     </div>
                                 </div>
@@ -90,6 +90,21 @@
         document.addEventListener("DOMContentLoaded", function () {
             const updateProfileForm = document.getElementById("updateProfileForm");
 
+            // Retrieve user data from local storage
+            const data = JSON.parse(localStorage.getItem("userData"));
+            console.log('🚀 ~ userData:', data)
+            const userData = data?.data
+
+            // Check if user data exists
+            if (userData) {
+                // Populate form fields with user data
+                document.getElementById("fullName").value = userData.fullName;
+                document.getElementById("email").value = userData.email;
+                document.getElementById("phone").value = userData.phone;
+                document.getElementById("address").value = userData.address;
+                document.getElementById("gender").value = userData.gender;
+            }
+
             updateProfileForm.addEventListener("submit", function (event) {
                 event.preventDefault(); // Prevent the default form submission
 
@@ -102,31 +117,11 @@
                     gender: document.getElementById("gender").value
                 };
 
-                // Send updated profile data to the API for updating
-                // Example: Replace this with your actual API endpoint and logic
-                fetch("https://your-api.com/update-profile", {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(updatedProfileData)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Failed to update profile");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Handle successful response from the API
-                    console.log("Profile updated successfully:", data);
-                    alert("Profile updated successfully");
-                })
-                .catch(error => {
-                    // Handle error
-                    console.error("Error updating profile:", error);
-                    alert("Failed to update profile. Please try again later.");
-                });
+                // Update user data in local storage
+                // localStorage.setItem("userData", JSON.stringify(updatedProfileData));
+
+                // Show success message
+                // alert("Profile updated successfully");
             });
         });
     </script>

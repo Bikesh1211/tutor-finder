@@ -29,7 +29,7 @@
           <h2>Latest Student Posts</h2>
           <p>Browse through the latest posts from students looking for tutors.</p>
           <p>Connect with students who are seeking tutoring services in various subjects and classes.</p>
-          <a href="feed.html" class="btn btn-primary">Explore Student Posts</a>
+          <a href="login.html" class="btn btn-primary" id="student-post">Sign In To See Students Posts</a>
         </div>
         <div class="col-md-6">
           <img src="https://beacontutorspk.com/wp-content/uploads/2023/02/online-home-tution-services-1024x679.png" alt="Latest Student Posts" class="img-fluid">
@@ -46,14 +46,16 @@
     const isLoggedIn = false; // Example: Change this to your actual logic
     const userData = localStorage.getItem("userData");
     const token = JSON.parse(userData)?.data?.token;
-    console.log('🚀 ~ token:', Boolean(token))
     
     // Get the action button
     const actionButton = document.getElementById("actionButton");
+    const studentPostbtn = document.getElementById("student-post");
     
     // If user is logged in, change the button text and link
     if (Boolean(token)) {
       actionButton.innerText = "Find Tutor";
+      studentPostbtn.innerText = "Explore Student Posts";
+      studentPostbtn.href = 'feed.html'
       actionButton.href = "tutor.html"; // Update this to your find teacher page
     } else {
       actionButton.innerText ="Sign In Now"

@@ -2,7 +2,9 @@ async function getUsers() {
   try {
     const response = await fetch("http://localhost:2003/feeds");
     const feeds = await response.json();
-    renderUsers(feeds);
+    console.log("🚀 ~ getUsers ~ feeds:", feeds);
+    // renderUsers(feeds);
+    renderPostCards(feeds);
     return feeds;
   } catch (error) {
     console.error("Error fetching feeds:", error);
@@ -10,45 +12,72 @@ async function getUsers() {
   }
 }
 
-function renderUsers(users) {
-  const userListContainer = document.getElementById("feed-list");
-  userListContainer.innerHTML = ""; // Clear previous content
+// Sample data from API response
+// const apiData = [
+//   {
+//     subject: "Math",
+//     studentName: "Student 1",
+//     classLevel: "+2",
+//     medium: "English",
+//     salary: "$50/hour",
+//     location: "Location 1",
+//     university: "University 1",
+//     postedOn: "January 15, 2024",
+//   },
+//   {
+//     subject: "Science",
+//     studentName: "Student 2",
+//     classLevel: "+1",
+//     medium: "English",
+//     salary: "$40/hour",
+//     location: "Location 2",
+//     university: "University 2",
+//     postedOn: "January 16, 2024",
+//   },
+//   // Add more data items as needed
+// ];
 
-  users.forEach((data) => {
-    const cardElement = document.createElement("div");
-    cardElement.classList.add("col-8");
-    cardElement.innerHTML = `
-          <div class="card mb-4 p-4 rounded-4">
-              <div class="row g-0">
-                  <div class="col-md-2">
-                      <img src="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg" class="card-img-top avatar rounded-circle" alt="Avatar">
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h5 class="card-title">${data.name}</h5>
-                          <p class="card-text">${data.message}</p>
-                          <p class="card-text text-secondary">Post on: ${data.postedOn}<br>Deadline: ${data.deadline}</p>
-                      </div>
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Subject: ${data.subject}</li>
-                          <li class="list-group-item">Class: ${data.class}</li>
-                          <li class="list-group-item">Medium: ${data.medium}</li>
-                          <li class="list-group-item">Salary: ${data.salary}</li>
-                          <li class="list-group-item">Location: ${data.location}</li>
-                          <li class="list-group-item">Phone Number: ${data.phone}</li>
-                          <li class="list-group-item">Preferred University: ${data.prefered_university}</li>
-                      </ul>
-                      <div class="card-body">
-                          <button class="btn btn-outline-success">Apply</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      `;
-    userListContainer.appendChild(cardElement);
-  });
+// Function to create a post card from data
+function createPostCard(data) {
+  const card = document.createElement("div");
+  card.classList.add("col-md-6");
+
+  card.innerHTML = `
+    <div class="card mb-3">
+      <div class="card-header fw-bold">
+        Subject: ${data.subject} 
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">${data.name}</h5>
+        <p class="card-text">Class: ${data.class}</p>
+        <p class="card-text">Medium: ${data.medium}</p>
+        <p class="card-text">Salary: ${data.salary}</p>
+        <p class="card-text">Location: ${data.location}</p>
+        <p class="card-text">Preferred University: ${data.prefered_university}</p>
+        <p class="card-text"><small class="text-muted">Posted on: ${data.created_at}</small></p>
+        <a href="#" class="btn btn-primary">Contact</a>
+      </div>
+    </div>
+  `;
+
+  return card;
 }
 
+// Function to render post cards from API data
+function renderPostCards(data) {
+  const row = document.querySelector(".row");
+
+  // Clear existing content
+  row.innerHTML = "";
+
+  // Create and append post cards
+  data.forEach((item) => {
+    const postCard = createPostCard(item);
+    row.appendChild(postCard);
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
   getUsers();
 });
+
+// Call the renderPostCards function with the API data
