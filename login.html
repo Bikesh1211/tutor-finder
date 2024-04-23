@@ -25,7 +25,7 @@
   <div class="container">
     <div class="row justify-content-center mt-5">
       <div class="col-md-6">
-        <div class="card">
+        <div class="card rounded shadow-lg p-2">
           <div class="card-body">
             <h1 class="text-center">
               <i class="bi bi-person-circle "></i>
@@ -43,7 +43,7 @@
                 <input type="password" class="form-control" id="password" required>
                 <div class="invalid-feedback">Please provide your password.</div>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Sign In</button>
+              <button type="submit" class="btn btn-outline-primary rounded-pill w-100">Sign In</button>
             </form>
             <div class="text-center mt-3">
              <a href="signup.html">ForgotPassword ?</a>
@@ -96,13 +96,21 @@
               // Display success message
               const alertContainer = document.getElementById('alertContainer');
               alertContainer.innerHTML = `
-                <div class="alert alert-success " role="alert">
-                  Login successful! Redirecting to homepage...
-                </div>
+              <div class="alert-container" style="position: absolute; top: 0; left:20px; right: 0; width: 300px; overflow: auto; z-index: 9;">
+  <div id="logoutAlert" class="alert alert-warning alert-dismissible fade show mt-3" role="alert" ">
+    Login successful! Redirecting to homepage...
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
               `;
+              // alertContainer.innerHTML = `
+              //   <div class="alert alert-success " role="alert">
+              //     Login successful! Redirecting to homepage...
+              //   </div>
+              // `;
               // Redirect after a short delay
               setTimeout(function () {
-                window.location.replace("index.html");
+                window.location.replace("feed.html");
                 const userData = JSON.stringify(data);
                 localStorage.setItem('userData', userData);
               },2000);

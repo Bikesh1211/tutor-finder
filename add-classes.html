@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Online Class</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+
+  <div id="navbarContainer"></div>
+  <div class="alertContainer"></div>
+
+  <!-- Hero Section for Online Classes -->
+  <section class="hero bg-info text-black py-5">
+    <div class="container text-center">
+      <h1 class="display-4">Share Your Online Classes</h1>
+      <p class="lead">Are you offering online classes? Create a post now and connect with students who are seeking online learning opportunities!</p>
+      <a id="actionButton" class="btn btn-primary" href="student.html">Find Students</a>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row m-5">
+      <h1>Create Online Class</h1>
+      <div class="col-xs-12 col-xl-6">
+        <form id="classForm" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="className" class="form-label">Class Name</label>
+            <input type="text" class="form-control form-control-sm border border-secondary" id="className" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback">Please provide a class name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="classDetails" class="form-label">Class Details</label>
+            <textarea class="form-control form-control-sm border border-secondary" id="classDetails" rows="3" required></textarea>
+            <div class="invalid-feedback">Please provide class details.</div>
+          </div>
+          <div class="mb-3">
+            <label for="classSchedule" class="form-label">Class Schedule</label>
+            <input type="text" class="form-control form-control-sm border border-secondary" id="classSchedule" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback">Please provide class schedule.</div>
+          </div>
+          <div class="mb-3">
+            <label for="classPrice" class="form-label">Price per Hour</label>
+            <input type="text" class="form-control form-control-sm border border-secondary" id="classPrice" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback">Please provide a price.</div>
+          </div>
+          <div class="mb-3">
+            <label for="classLink" class="form-label">Online Class Link</label>
+            <input type="text" class="form-control form-control-sm border border-secondary" id="classLink" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback">Please provide a class link.</div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <button type="submit" class="btn btn-primary">Share Class</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-xs-12 col-xl-6">
+        <img src="https://example.com/placeholder.jpg" class="img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('classForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (!this.checkValidity()) {
+        event.stopPropagation();
+        this.classList.add('was-validated');
+        return;
+      }
+
+      const className = document.getElementById('className').value;
+      const classDetails = document.getElementById('classDetails').value;
+      const classSchedule = document.getElementById('classSchedule').value;
+      const classPrice = document.getElementById('classPrice').value;
+      const classLink = document.getElementById('classLink').value;
+
+      const data = {
+        className,
+        classDetails,
+        classSchedule,
+        classPrice,
+        classLink
+      };
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      };
+
+      fetch('http://localhost:2003/online-classes', options)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          console.log(response.status, '<----- status')
+          return response.json();
+        })
+        .then(data => {
+          console.log(data?.success)
+          if (data?.success) {
+            alert('success');
+            window.location.replace('online-classes.html');
+          }
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    });
+  </script>
+
+  <script src="./js/navbar.js"></script>
+  <div id="footerContainer"></div>
+  <script src="../js/footer.js"></script>
+</body>
+
+</html>

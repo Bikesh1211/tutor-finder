@@ -11,16 +11,16 @@
 
   <!-- Navbar -->
   <div id="navbarContainer"></div>
+  <script src="js/navbar.js"></script>
 
   <!-- Hero Section -->
-  <section class="hero bg-info text-black py-5">
+  <section class="hero bg-info  text-black py-5">
     <div class="container text-center">
       <h1 class="display-4">Find Your Perfect Tutor</h1>
       <p class="lead">Get personalized tutoring from top-rated tutors in your area.</p>
       <a id="actionButton" class="btn btn-primary" href="#">Action</a> <!-- Button's ID set to actionButton -->
     </div>
   </section>
-
   <!-- About Section -->
   <section class="latest-posts py-5">
     <div class="container">
@@ -29,7 +29,7 @@
           <h2>Latest Student Posts</h2>
           <p>Browse through the latest posts from students looking for tutors.</p>
           <p>Connect with students who are seeking tutoring services in various subjects and classes.</p>
-          <a href="login.html" class="btn btn-primary" id="student-post">Sign In To See Students Posts</a>
+          <a href="login.html" class="btn btn-outline-primary rounded-pill" id="student-post">Sign In To See Students Posts</a>
         </div>
         <div class="col-md-6">
           <img src="https://beacontutorspk.com/wp-content/uploads/2023/02/online-home-tution-services-1024x679.png" alt="Latest Student Posts" class="img-fluid">
@@ -37,10 +37,20 @@
       </div>
     </div>
   </section>
-  
+  <hr>
+  <section class="container my-5" id="posts-container">
+    <h1 class="display-6 text-center my-5">See Latest Post From Students</h1>
+    <div class="row"></div>
 
+    <div class="d-flex justify-content-center">
+      <a href="feed.html" class="btn btn-outline-primary rounded-pill mt-5"><i class="bi bi-arrow-bar-up"></i> Browse all Students Posts</a>
+    </div>
+    
+
+  </section>
+  
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/navbar.js"></script>
   <script>
     // Check if the user is logged in (you can use your own logic here)
     const isLoggedIn = false; // Example: Change this to your actual logic
@@ -62,5 +72,59 @@
       actionButton.href = "login.html"; // Update this to your sign up page
     }
   </script>
+
+
+
+
+<script>
+  // Sample data array from backend
+  const dataArray = [
+    { subject: "Math", name: "John Doe", class: "10th", medium: "English", salary: "$50/hour", location: "City A", preferred_university: "University X", created_at: "2024-04-21" },
+    { subject: "Science", name: "Jane Smith", class: "11th", medium: "English", salary: "$60/hour", location: "City B", preferred_university: "University Y", created_at: "2024-04-20" }
+  ];
+
+  // Get the container where you want to append the cards
+  const container = document.getElementById("posts-container").querySelector(".row");
+
+  // Iterate through the data array and create card HTML dynamically
+  dataArray.forEach(data => {
+    // Create a new div element for the card
+    const cardWrapper = document.createElement("div");
+    cardWrapper.classList.add("col-6");
+
+    // Construct the card HTML using string interpolation
+    cardWrapper.innerHTML = `
+      <div class="card mb-3">
+        <div class="card-header fw-bold">
+          Subject: ${data.subject}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${data.name}</h5>
+          <p class="card-text">Class: ${data.class}</p>
+          <p class="card-text">Medium: ${data.medium}</p>
+          <p class="card-text">Salary: ${data.salary}</p>
+          <p class="card-text">Location: ${data.location}</p>
+          <p class="card-text">Preferred University: ${data.preferred_university}</p>
+          <p class="card-text"><small class="text-muted">Posted on: ${data.created_at}</small></p>
+          <a href="#" class="btn btn-primary">Contact</a>
+        </div>
+      </div>
+    `;
+
+    // Append the card wrapper to the container
+    container.appendChild(cardWrapper);
+  });
+</script>
+
+
+
+<div id="footerContainer"></div>
+<script src="../js/footer.js"></script>
+
+
+
+
 </body>
 </html>
+
+

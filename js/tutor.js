@@ -16,21 +16,23 @@ async function getUsers() {
 function createPostCard(data) {
   const card = document.createElement("div");
   card.classList.add("col-md-6");
-
   card.innerHTML = `
-    <div class="card h-100">
+  <div class="card border-1 rounded shadow-lg p-3">
     <div class="card-body">
-      <h5 class="card-title"> 
-    <i class="bi bi-person-circle "></i>
-
-      ${data.fullName}</h5>
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <a href="#" class="btn btn-primary">View Profile</a>
+      <h5 class="card-title mb-4"> 
+        <i class="bi bi-person-circle me-2" style="font-size: 2rem;"></i> ${data.fullName}
+      </h5>
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item border-0"><strong>Email:</strong> ${data.email}</li>
+        <li class="list-group-item border-0"><strong>Phone:</strong> ${data.phone}</li>
+        <li class="list-group-item border-0"><strong>Address:</strong> ${data.address}</li>
+        <li class="list-group-item border-0"><strong>Education:</strong> ${data.education}</li>
+        <li class="list-group-item border-0"><strong>Experience:</strong> ${data.experience}</li>
+      </ul>
+      <a href="#" class="btn btn-outline-primary d-block w-100 rounded-pill">Hire Now</a>
     </div>
   </div>
-    `;
-
-  // `;
+`;
 
   return card;
 }

@@ -15,66 +15,90 @@
   
   <div id="navbarContainer"></div>
 
-
-  <!-- Hero Section -->
-  <section class="hero bg-info text-black py-5">
-
+<div class="alertContainer"></div>
+<!-- Hero Section for Student Posts -->
+<section class="hero bg-info text-black py-5">
   <div class="container text-center">
-    <h1 class="display-4">Find Your Perfect Tutor</h1>
+    <h1 class="display-4">Share Your Study Needs</h1>
     <p class="lead">Are you struggling with your studies? Create a post now and connect with top-rated tutors who can help you excel!</p>
-    <a id="actionButton" class="btn btn-primary" href="#">Create Post</a>
+    <a id="actionButton" class="btn btn-primary" href="tutor.html">Find Tutor</a>
   </div>
 </section>
+
 
   
   <div class="container">
     <div class="row m-5">
       <h1>Create Post</h1>
-      <div class="col-xs-12 col-lg-6 col-xl-5 order-lg-2 order-sm-1">
+      <div class="col-xs-12 col-xl-6 p-5">
         <form id="postForm" class="needs-validation" novalidate>
-          <div class="mb-3">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control form-control-sm" id="subject" aria-describedby="emailHelp" required>
-            <div class="invalid-feedback">Please provide a subject.</div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control form-control-sm border border-secondary" id="subject" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">Please provide a subject.</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="class" class="form-label">Class</label>
+                <input type="text" class="form-control form-control-sm border border-secondary" id="class" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">Please provide a class.</div>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="class" class="form-label">Class</label>
-            <input type="text" class="form-control form-control-sm" id="class" aria-describedby="emailHelp" required>
-            <div class="invalid-feedback">Please provide a class.</div>
+        
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="medium" class="form-label">Medium</label>
+                <input type="text" class="form-control form-control-sm border border-secondary" id="medium" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">Please provide a medium.</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="text" class="form-control form-control-sm border border-secondary" id="salary" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">Please provide a salary.</div>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="medium" class="form-label">Medium</label>
-            <input type="text" class="form-control form-control-sm" id="medium" aria-describedby="emailHelp" required>
-            <div class="invalid-feedback">Please provide a medium.</div>
+        
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control form-control-sm border border-secondary" id="location" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">Please provide a location.</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control form-control-sm border border-secondary" id="phone" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">Please provide a phone number.</div>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="salary" class="form-label">Salary</label>
-            <input type="text" class="form-control form-control-sm" id="salary" aria-describedby="emailHelp" required>
-            <div class="invalid-feedback">Please provide a salary.</div>
-          </div>
-          <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control form-control-sm" id="location" aria-describedby="emailHelp" required>
-            <div class="invalid-feedback">Please provide a location.</div>
-          </div>
-          <div class="mb-3">
-            <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control form-control-sm" id="phone" aria-describedby="emailHelp" required>
-            <div class="invalid-feedback">Please provide a phone number.</div>
-          </div>
+        
           <div class="mb-3">
             <label for="prefered_university" class="form-label">Preferred University</label>
-            <input type="text" class="form-control form-control-sm" id="prefered_university" aria-describedby="emailHelp">
+            <input type="text" class="form-control form-control-sm border border-secondary" id="prefered_university" aria-describedby="emailHelp">
           </div>
-
+        
           <div class="d-flex justify-content-between align-items-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Share Post</button>
           </div>
         </form>
+        
+
       </div>
-      <div class="col-xs-12 col-lg-6 col-xl-5 order-lg-2 order-sm-1">
-     <img src="https://varthana.com/school/wp-content/uploads/2022/12/B103.jpg" alt="">
-      </div>
+      <div class="col-xs-12 col-xl-6">
+        <img src="https://varthana.com/school/wp-content/uploads/2022/12/B103.jpg" class="img-fluid" alt="">
+    </div>
+    
       </div>
       <script>
         document.getElementById('postForm').addEventListener('submit', function (event) {
@@ -120,21 +144,32 @@
               return response.json();
             })
             .then(data => {
-              console.log('response->>>>>>', data)
-              if (data.success) {
-                console.log('redirect to index.html');
-                // Redirect to index.html or do something else
+              console.log(data?.success)
+              if(data?.success){
+alert('success')
+  //               // Display success message
+  //               const alertContainer = document.getElementById('alertContainer');
+  //               alertContainer.innerHTML = `
+  //               <div class="alert-container" style="position: absolute; top: 0; left:20px; right: 0; width: 300px; overflow: auto; z-index: 9;">
+  //   <div id="logoutAlert" class="alert alert-warning alert-dismissible fade show mt-3" role="alert" ">
+  //     Login successful! Redirecting to homepage...
+  //     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  //   </div>
+  // </div>
+  //               `;
+  window.location.replace('feed.html');
               }
             })
             .catch(error => {
               console.error('There was a problem with the fetch operation:', error);
             });
         });
+            console.log('🚀 ~ data:', data)
       </script>
     </div>
   </div>
-  <div id="footerContainer"></div>
   <script src="./js/navbar.js"></script>
+  <div id="footerContainer"></div>
   <script src="../js/footer.js"></script>
 </body>
 

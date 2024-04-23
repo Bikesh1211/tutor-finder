@@ -9,16 +9,23 @@ window.addEventListener("DOMContentLoaded", () => {
       const createPostBtn = document.getElementById("create-post");
       const logoutLi = document.getElementById("logout-li");
       const userNameLink = document.getElementById("userNameLink");
+      const onlineClassId = document.getElementById("online-class");
       const userName = JSON.parse(userData)?.data?.fullName;
 
       userNameLink.innerHTML = `
-      <i class="bi bi-person-circle" ></i>
+      <i class="bi bi-person-circle"></i>
       ${userName}
     `;
 
       logoutButton.addEventListener("click", () => {
+        const logoutAlert = document.getElementById("logoutAlert");
+
         localStorage.clear();
-        window.location.replace("/");
+        logoutAlert.style.display = "block";
+        setTimeout(() => {
+          logoutAlert.style.display = "none";
+          window.location.replace("/");
+        }, 1000); // Hides the alert after 3 seconds and redirects to home page
       });
 
       const isLoggedIn = Boolean(token);
@@ -26,6 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (isLoggedIn) {
         logoutLi.classList.remove("d-none");
         userNameLink.classList.remove("d-none");
+        onlineClassId.classList.remove("d-none");
 
         // Remove login and sign up buttons if user is logged in
         document.getElementById("login-btn").parentNode.classList.add("d-none");

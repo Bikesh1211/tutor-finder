@@ -43,7 +43,7 @@ function createPostCard(data) {
   card.classList.add("col-md-6");
 
   card.innerHTML = `
-    <div class="card mb-3">
+    <div class="card mb-3 rounded shadow-lg p-3">
       <div class="card-header fw-bold">
         Subject: ${data.subject} 
       </div>
@@ -55,7 +55,7 @@ function createPostCard(data) {
         <p class="card-text">Location: ${data.location}</p>
         <p class="card-text">Preferred University: ${data.prefered_university}</p>
         <p class="card-text"><small class="text-muted">Posted on: ${data.created_at}</small></p>
-        <a href="#" class="btn btn-primary">Contact</a>
+        <a href="#" class="btn btn-outline-primary d-block w-100 rounded-pill">Apply</a>
       </div>
     </div>
   `;
