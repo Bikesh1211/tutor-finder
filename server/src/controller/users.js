@@ -25,9 +25,9 @@ const registerUser = async (req, res) => {
   try {
     const body = convertToJSON(req.body);
     const data = await userService.addUser(body);
-    res.end(JSON.stringify({ data }));
+    res.end(JSON.stringify({ data, success: true }));
   } catch (error) {
-    res.end(JSON.stringify({ error: "Invalid JSON data" }));
+    res.end(JSON.stringify({ error: "Invalid JSON data", success: false }));
   }
 };
 

@@ -1,11 +1,16 @@
 const { User } = require("../model/user");
-const { createToken, verifyToken } = require("../utils/jwt.utils");
+const {
+  createToken,
+  verifyToken,
+  createPasswordToken,
+} = require("../utils/jwt.utils");
 
 class UserService {
   constructor(UserModel) {
     this.UserModel = UserModel;
   }
   async addUser(body) {
+    const { password, ...rest } = body;
     const body1 = {
       email: "don@gmail.com",
       password: "bdon",
@@ -22,15 +27,22 @@ class UserService {
         { name: "address", type: "VARCHAR(50)", notNull: true },
         { name: "gender", type: "VARCHAR(50)", notNull: true },
         { name: "email", type: "VARCHAR(100)", notNull: true },
-        { name: "password", type: "VARCHAR(100)", notNull: true },
+        { name: "password", type: "VARCHAR(500)", notNull: true },
         { name: "role", type: "VARCHAR(50)", notNull: true },
         { name: "created_at", type: "TIMESTAMP DEFAULT CURRENT_TIMESTAMP" },
       ];
 
       await this.UserModel.createTable(columns);
-      // await this.UserModel.dropTable();
 
-      const user = await this.UserModel.create(body);
+      const hashedPassword = createPasswordToken(password);
+      console.log(
+        "🚀 ~ UserService ~ addUser ~ hashedPassword:",
+        hashedPassword
+      );
+      const user = await this.UserModel.create({
+        ...rest,
+        password: hashedPassword,
+      });
       return user;
     } catch (error) {
       throw error;
@@ -48,6 +60,7 @@ class UserService {
   async loginUser(body) {
     try {
       const { email, password } = body;
+
       try {
         const user = await this.UserModel.findOne({ email });
         if (!user) {
@@ -59,7 +72,8 @@ class UserService {
           role: user.role,
         });
         const de = verifyToken(token);
-        if (user.password === password) {
+        console.log({ user: verifyToken(user.password), password });
+        if (verifyToken(user.password) === password) {
           return {
             ...user,
             token,

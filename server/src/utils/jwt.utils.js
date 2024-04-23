@@ -3,6 +3,9 @@ const secretKey = "tutor-finder";
 const createToken = (payload) => {
   return jwt.sign(payload, secretKey);
 };
+const createPasswordToken = (payload) => {
+  return jwt.sign(payload, secretKey);
+};
 const verifyToken = (token) => {
   try {
     const decodedToken = jwt.verify(token, secretKey);
@@ -11,4 +14,4 @@ const verifyToken = (token) => {
     return { error: error.message };
   }
 };
-module.exports = { createToken, verifyToken };
+module.exports = { createToken, verifyToken,createPasswordToken };

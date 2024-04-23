@@ -11,16 +11,16 @@
 </head>
 
 <body>
-
+  <div id="alertContainer"></div>
   <div id="navbarContainer"></div>
   <script src="./js/navbar.js"></script>
   
-  <!-- Hero Section -->
-<section class="hero bg-info text-black py-5">
+<!-- Hero Section -->
+<section class="hero bg-primary text-white py-5">
   <div class="container text-center">
     <h1 class="display-4">Join Our Community</h1>
     <p class="lead">Register now and unlock access to exclusive features.</p>
-    <a id="actionButton" class="btn btn-primary" href="login.html">Sign In</a> <!-- Button's ID set to actionButton -->
+    <a id="actionButton" class="btn btn-warning" href="login.html">Sign In</a> <!-- Button's ID set to actionButton -->
   </div>
 </section>
 
@@ -111,7 +111,6 @@
 
     </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Validate form on submit
@@ -160,13 +159,30 @@
                   if (!response.ok) {
                     throw new Error("Network response was not ok");
                   }
-                  console.log(response.status, "<----- status");
                   return response.json();
                 })
                 .then((data) => {
+                  console.log({data})
                   if (data.success) {
-                    window.location.replace("users.html");
-                    localStorage.setItem("userData", JSON.stringify(data));
+                      // window.location.replace('/login.html')
+
+                                    // Display success message
+              const alertContainer = document.getElementById('alertContainer');
+              alertContainer.innerHTML = `
+              <div class="alert-container" style="position: absolute; top: 0; left:20px; right: 0; width: 300px; overflow: auto; z-index: 9;">
+  <div id="logoutAlert" class="alert alert-warning alert-dismissible fade show mt-3" role="alert" ">
+    Signing Up ! Redirecting to login Page...
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>`;
+              setTimeout(function () {
+                window.location.replace("/login.html");
+                const userData = JSON.stringify(data);
+              },2000);
+                      
+                      
+                      
+                      
                   }
                 })
                 .catch((error) => {
