@@ -36,6 +36,11 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
+                <label for="studentName" class="form-label">Student Name</label>
+                <input type="text" class="form-control form-control-sm border border-secondary" id="studentName" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">Please provide a Student Name.</div>
+              </div>
+              <div class="mb-3">
                 <label for="subject" class="form-label">Subject</label>
                 <input type="text" class="form-control form-control-sm border border-secondary" id="subject" aria-describedby="emailHelp" required>
                 <div class="invalid-feedback">Please provide a subject.</div>
@@ -117,6 +122,7 @@
           const prefered_university = document.getElementById('prefered_university').value;
           const location = document.getElementById('location').value;
           const phone = document.getElementById('phone').value;
+          const studentName = document.getElementById('studentName').value;
 
           const data = {
             subject,
@@ -125,7 +131,8 @@
             prefered_university,
             class: standard,
             location,
-            phone
+            phone,
+            studentName
           };
 
           const options = {

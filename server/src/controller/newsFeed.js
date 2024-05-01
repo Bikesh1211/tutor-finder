@@ -11,16 +11,6 @@ const getFeeds = async (req, res) => {
     res.end("Internal Server Error");
   }
 };
-const addFeeds = async (req, res) => {
-  const body = convertToJSON(req.body);
-  console.log("🚀 ~ addFeed ~ body:", body);
-  try {
-    const user = await feedServices.addFeed(body);
-    // res.end({ success: true, user });
-  } catch (error) {
-    res.end({ success: false, error: "Error adding user", error });
-  }
-};
 
 const addNewsFeed = async (req, res) => {
   try {
@@ -63,7 +53,6 @@ const deleteUser = async (req, res) => {
 };
 module.exports = {
   getFeeds,
-  addFeeds,
   updateUser,
   deleteUser,
   loginUser,

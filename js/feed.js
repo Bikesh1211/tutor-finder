@@ -48,13 +48,17 @@ function createPostCard(data) {
         Subject: ${data.subject} 
       </div>
       <div class="card-body">
-        <h5 class="card-title">${data.name}</h5>
+        <h5 class="card-title">${data.studentName}</h5>
         <p class="card-text">Class: ${data.class}</p>
         <p class="card-text">Medium: ${data.medium}</p>
         <p class="card-text">Salary: ${data.salary}</p>
         <p class="card-text">Location: ${data.location}</p>
-        <p class="card-text">Preferred University: ${data.prefered_university}</p>
-        <p class="card-text"><small class="text-muted">Posted on: ${data.created_at}</small></p>
+        <p class="card-text">Preferred University: ${
+          data.prefered_university
+        }</p>
+        <p class="card-text"><small class="text-muted">Posted on: ${new Date(
+          data.created_at
+        ).toLocaleString()}</small></p>
         <a href="#" class="btn btn-outline-primary d-block w-100 rounded-pill">Apply</a>
       </div>
     </div>
