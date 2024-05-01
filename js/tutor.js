@@ -29,7 +29,7 @@ function createPostCard(data) {
         <li class="list-group-item border-0"><strong>Education:</strong> ${data.education}</li>
         <li class="list-group-item border-0"><strong>Experience:</strong> ${data.experience}</li>
       </ul>
-      <a href="#" class="btn btn-outline-primary d-block w-100 rounded-pill">Hire Now</a>
+      <a href="tel:${data.phone}" class="btn btn-outline-primary d-block w-100 rounded-pill">Hire Now</a>
     </div>
   </div>
 `;

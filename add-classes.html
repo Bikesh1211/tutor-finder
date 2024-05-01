@@ -35,6 +35,16 @@
             <div class="invalid-feedback">Please provide a class name.</div>
           </div>
           <div class="mb-3">
+            <label for="grade" class="form-label">Grade</label>
+            <input type="text" class="form-control form-control-sm border border-secondary" id="grade" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback">Please provide a Grade.</div>
+          </div>
+          <div class="mb-3">
+            <label for="medium" class="form-label">Medium</label>
+            <input type="text" class="form-control form-control-sm border border-secondary" id="medium" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback">Please provide a Grade.</div>
+          </div>
+          <div class="mb-3">
             <label for="classDetails" class="form-label">Class Details</label>
             <textarea class="form-control form-control-sm border border-secondary" id="classDetails" rows="3" required></textarea>
             <div class="invalid-feedback">Please provide class details.</div>
@@ -79,13 +89,17 @@
       const classSchedule = document.getElementById('classSchedule').value;
       const classPrice = document.getElementById('classPrice').value;
       const classLink = document.getElementById('classLink').value;
+      const medium = document.getElementById('medium').value;
+      const grade = document.getElementById('grade').value;
 
       const data = {
         className,
         classDetails,
         classSchedule,
         classPrice,
-        classLink
+        classLink,
+        medium,
+        grade
       };
 
       const options = {
@@ -96,7 +110,7 @@
         body: JSON.stringify(data)
       };
 
-      fetch('http://localhost:2003/online-classes', options)
+      fetch('http://localhost:2003/online-class', options)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');

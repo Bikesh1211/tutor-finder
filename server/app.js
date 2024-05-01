@@ -13,6 +13,10 @@ const RouteHandler = require("./src/routes/users");
 const url = require("url");
 const qs = require("querystring");
 const { addFeed, addNewsFeed, getFeeds } = require("./src/controller/newsFeed");
+const {
+  addOnlineClass,
+  getOnlineClass,
+} = require("./src/controller/OnlineClass");
 const onRequest = async (req, res) => {
   const { method } = req;
   const parsedUrl = url.parse(req.url, true);
@@ -55,11 +59,18 @@ const onRequest = async (req, res) => {
       res.writeHead(200, { "Content-Type": "application/json" });
       await registerUser(req, res);
     } else if (method === "POST" && req.url === "/feeds") {
+    } else if (method === "POST" && req.url === "/online-class") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      await addOnlineClass(req, res);
+    } else if (method === "POST" && req.url === "/feeds") {
       res.writeHead(200, { "Content-Type": "application/json" });
       await addNewsFeed(req, res);
     } else if (method === "GET" && req.url === "/feeds") {
       res.writeHead(200, { "Content-Type": "application/json" });
       await getFeeds(req, res);
+    } else if (method === "GET" && req.url === "/online-class") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      await getOnlineClass(req, res);
     } else if (method === "GET" && req.url === "/tutor") {
       res.writeHead(200, { "Content-Type": "application/json" });
       await getTutor(req, res);
