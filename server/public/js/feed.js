@@ -2,7 +2,6 @@ async function getUsers() {
   try {
     const response = await fetch("http://localhost:2003/feeds");
     const feeds = await response.json();
-    console.log("🚀 ~ getUsers ~ feeds:", feeds);
     renderUsers(feeds);
     return feeds;
   } catch (error) {

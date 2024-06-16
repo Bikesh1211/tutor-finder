@@ -2,7 +2,6 @@ async function getUsers() {
   try {
     const response = await fetch("http://localhost:2003/feeds");
     const feeds = await response.json();
-    console.log("🚀 ~ getUsers ~ feeds:", feeds);
     // renderUsers(feeds);
     renderPostCards(feeds);
     return feeds;
@@ -52,6 +51,7 @@ function createPostCard(data) {
         <p class="card-text">Class: ${data.class}</p>
         <p class="card-text">Medium: ${data.medium}</p>
         <p class="card-text">Salary: ${data.salary}</p>
+        <p class="card-text">Phone: ${data.phone}</p>
         <p class="card-text">Location: ${data.location}</p>
         <p class="card-text">Preferred University: ${
           data.prefered_university

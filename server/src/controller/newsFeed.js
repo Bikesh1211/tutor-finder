@@ -16,6 +16,7 @@ const addNewsFeed = async (req, res) => {
   try {
     const body = convertToJSON(req.body);
     const data = await feedServices.addFeed(body);
+    console.log({ data });
     res.end(JSON.stringify({ data, success: true }));
   } catch (error) {
     res.end(JSON.stringify({ error: "Invalid JSON data", success: false }));

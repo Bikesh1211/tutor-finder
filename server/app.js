@@ -143,6 +143,12 @@ const onRequest = async (req, res) => {
     } else if (method === "GET" && req.url === "/tutor") {
       res.writeHead(200, { "Content-Type": "application/json" });
       await getTutor(req, res);
+    } else if (method === "POST" && req.url === "/online-class") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      await addOnlineClass(req, res);
+    } else if (method === "GET" && req.url === "/online-class") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      await getOnlineClass(req, res);
     } else {
       res.writeHead(404);
       res.end(JSON.stringify({ error: "Not Found" }));

@@ -8,8 +8,8 @@ class FeedServices {
     try {
       const columns = [
         { name: "id", type: "INT AUTO_INCREMENT", primaryKey: true },
-        { name: "subject", type: "VARCHAR(50)", notNull: true },
         { name: "studentName", type: "VARCHAR(50)", notNull: true },
+        { name: "subject", type: "VARCHAR(50)", notNull: true },
         { name: "class", type: "VARCHAR(50)", notNull: true },
         { name: "medium", type: "VARCHAR(50)", notNull: true },
         { name: "salary", type: "VARCHAR(100)", notNull: true },
@@ -22,6 +22,7 @@ class FeedServices {
       // await this.NewsFeedModel.dropTable();
 
       const user = await this.NewsFeedModel.create(body);
+      console.log({ user });
       return user;
     } catch (error) {
       throw error;

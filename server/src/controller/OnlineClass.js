@@ -4,6 +4,7 @@ const { convertToJSON } = require("../utils/jsonUtils");
 const addOnlineClass = async (req, res) => {
   try {
     const body = convertToJSON(req.body);
+    console.log({ body });
     const data = await onlineClassService.addOnlineClass(body);
     res.end(JSON.stringify({ data, success: true }));
   } catch (error) {
@@ -13,6 +14,7 @@ const addOnlineClass = async (req, res) => {
 const getOnlineClass = async (req, res) => {
   try {
     const data = await onlineClassService.getOnlineClass();
+    console.log({ data });
     res.end(JSON.stringify(data));
   } catch (error) {}
 };
