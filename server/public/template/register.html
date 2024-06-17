@@ -158,12 +158,14 @@
                 })
                 .then((data) => {
                   if (data.success) {
+                    // alert('Registration Successful');
                     window.location.replace("users.html");
                     localStorage.setItem("userData", JSON.stringify(data));
                   }
                 })
                 .catch((error) => {
                   // Handle errors
+                  alert("Validation Failed")
                   console.error(
                     "There was a problem with the fetch operation:",
                     error
